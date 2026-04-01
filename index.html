@@ -23,7 +23,7 @@
     --tooltip-body: #b0aca4;
     --filterbar-bg: rgba(244,242,238,0.94);
   }
-
+ 
   [data-theme="dark"] {
     --bg:      #0e0f13;
     --surface: #16181f;
@@ -39,7 +39,7 @@
     --tooltip-body: #b0b3c4;
     --filterbar-bg: rgba(22,24,31,0.96);
   }
-
+ 
   :root {
     --cz: #d44a4a;
     --sk: #3a82cc;
@@ -49,9 +49,9 @@
     --si: #20b89a;
     --hr: #c83a8a;
   }
-
+ 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   body {
     background: var(--bg);
     color: var(--text);
@@ -60,7 +60,7 @@
     min-height: 100vh;
     transition: background 0.3s, color 0.3s;
   }
-
+ 
   header {
     padding: 3rem 2rem 2rem;
     border-bottom: 1px solid var(--border);
@@ -71,7 +71,7 @@
     background: var(--surface);
     transition: background 0.3s, border-color 0.3s;
   }
-
+ 
   header h1 {
     font-family: 'Playfair Display', serif;
     font-size: clamp(1.8rem, 4vw, 3rem);
@@ -85,7 +85,7 @@
     max-width: 600px;
     line-height: 1.6;
   }
-
+ 
   .theme-toggle {
     position: absolute;
     top: 1.5rem;
@@ -105,7 +105,7 @@
     z-index: 10;
   }
   .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
-
+ 
   .filter-bar {
     padding: 1.25rem 2rem;
     display: flex;
@@ -154,7 +154,7 @@
   .country-btn[data-country="AT"] { color: var(--at); }
   .country-btn[data-country="SI"] { color: var(--si); }
   .country-btn[data-country="HR"] { color: var(--hr); }
-
+ 
   .select-all-btn {
     margin-left: auto;
     padding: 0.35rem 0.85rem;
@@ -168,14 +168,14 @@
     transition: all 0.2s;
   }
   .select-all-btn:hover { color: var(--text); border-color: var(--muted); }
-
+ 
   .dashboard {
     padding: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
     gap: 1.5rem;
   }
-
+ 
   .chart-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -190,7 +190,7 @@
   .chart-card:hover { border-color: var(--muted); }
   .chart-card.wide { grid-column: 1 / -1; }
   .chart-card.wide .chart-wrap { height: 320px; }
-
+ 
   .card-header { display: flex; flex-direction: column; gap: 0.3rem; }
   .card-title {
     font-family: 'Playfair Display', serif;
@@ -215,7 +215,7 @@
     transition: border-color 0.3s;
   }
   .chart-wrap { position: relative; height: 280px; }
-
+ 
   .section-divider {
     grid-column: 1 / -1;
     display: flex;
@@ -238,7 +238,7 @@
     background: var(--border);
     transition: background 0.3s;
   }
-
+ 
   .hr-notice {
     grid-column: 1/-1;
     background: rgba(139, 106, 46, 0.08);
@@ -250,7 +250,7 @@
     color: var(--accent);
     line-height: 1.6;
   }
-
+ 
   footer {
     padding: 2rem;
     border-top: 1px solid var(--border);
@@ -264,7 +264,7 @@
 </style>
 </head>
 <body>
-
+ 
 <header>
   <button class="theme-toggle" id="themeToggle">
     <span id="themeIcon">🌙</span>
@@ -273,7 +273,7 @@
   <h1>20 let v Evropské unii</h1>
   <p>Srovnání vybraných socioekonomických ukazatelů zemí střední Evropy od vstupu do EU (2004–2024). Chorvatsko vstoupilo v roce 2013, proto jeho řady začínají odlišně.</p>
 </header>
-
+ 
 <div class="filter-bar">
   <span class="filter-label">Zobrazit:</span>
   <button class="country-btn active" data-country="CZ"><span class="dot"></span>Česko</button>
@@ -285,11 +285,11 @@
   <button class="country-btn active" data-country="HR"><span class="dot"></span>Chorvatsko</button>
   <button class="select-all-btn" id="toggleAll">Skrýt vše</button>
 </div>
-
+ 
 <div class="dashboard">
-
+ 
   <div class="section-divider"><span>Ekonomika</span></div>
-
+ 
   <div class="chart-card wide">
     <div class="card-header">
       <div class="card-title">Vládní dluh jako podíl HDP</div>
@@ -298,7 +298,7 @@
     <div class="chart-wrap"><canvas id="chart-debt"></canvas></div>
     <div class="card-note">Hrubý vládní dluh sektoru vládních institucí (metodika ESA 2010). Přerušovaná linie označuje Maastrichtské kritérium 60 % HDP. Výrazně odlišné trajektorie odrážejí rozdílné fiskální strategie a dopady krizí 2008–09 a 2020.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">HDP na hlavu v paritě kupní síly</div>
@@ -307,7 +307,7 @@
     <div class="chart-wrap"><canvas id="chart-gdp-pps"></canvas></div>
     <div class="card-note">Index vyjadřující životní úroveň relativně k průměru EU27 (základna EU27_2020=100). Roky 2013–2024 jsou ověřená data Eurostat (tec00114). Roky 2004–2012 jsou zpětný odhad přepočtený ze starší série — interpretujte je orientačně. Hodnota 100 = průměr EU. Umožňuje srovnání bez zkreslení kurzovými rozdíly.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Kumulovaná inflace (HICP)</div>
@@ -316,8 +316,8 @@
     <div class="chart-wrap"><canvas id="chart-inflation"></canvas></div>
     <div class="card-note">Harmonizovaný index spotřebitelských cen. Ukazuje, o kolik % zdražilo zboží a služby celkem od roku 2004.</div>
   </div>
-
-
+ 
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Příjmová nerovnost — Giniho koeficient</div>
@@ -326,7 +326,7 @@
     <div class="chart-wrap"><canvas id="chart-gini"></canvas></div>
     <div class="card-note">Příjmový (nikoliv majetkový) Gini — harmonizovaná řada z EU-SILC. Hodnota 0 = dokonalá rovnost, 100 = veškerý příjem u jedné osoby. ⚠ Data jsou v Eurostat databázi ilc_di12 dostupná od roku 2014 pro CZ, SK, PL, HU, AT, SI a od roku 2013 pro HR — starší hodnoty v grafu nejsou zobrazeny. Kratší řada odráží dostupnost v primárním zdroji, nikoliv chybějící historii průzkumu.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Mediánový čistý příjem domácností 65+ v EUR</div>
@@ -335,7 +335,7 @@
     <div class="chart-wrap"><canvas id="chart-pension-pps"></canvas></div>
     <div class="card-note">Mediánový ekvivalizovaný čistý příjem (po daních a sociálních transferech) osob ve věku 65 a více let, v nominálních EUR. ⚠ Data jsou dostupná od roku 2014 pro CZ, SK, PL, HU, AT, SI (EU-SILC databáze ilc_di03); pro HR od roku 2013. Hodnoty v EUR nelze přímo srovnávat mezi zeměmi kvůli rozdílné cenové hladině — slouží především ke sledování trendů v čase.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Přiměřenost důchodů — příjem 65+ vůči mediánu populace</div>
@@ -344,9 +344,9 @@
     <div class="chart-wrap"><canvas id="chart-pension-ratio"></canvas></div>
     <div class="card-note">Mediánový čistý příjem osob 65+ jako podíl mediánového čistého příjmu celé populace. Hodnota 100 % = důchodci mají stejný příjem jako průměrný obyvatel. ⚠ Data jsou dostupná od roku 2014 pro CZ, SK, PL, HU, AT, SI a od roku 2013 pro HR (EU-SILC databáze ilc_di03).</div>
   </div>
-
+ 
   <div class="section-divider"><span>Demografie & společnost</span></div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Podíl obyvatel ve věku 60 a více let</div>
@@ -355,7 +355,7 @@
     <div class="chart-wrap"><canvas id="chart-aging"></canvas></div>
     <div class="card-note">Demografické stárnutí jako strukturální výzva. Strmější nárůst signalizuje rychlé stárnutí bez kompenzační migrace nebo porodnosti. Data: Eurostat demo_pjanind, roční série 2004–2024. ⚠ Eurostat v roce 2024 provedl revize populačních časových řad pro HR, HU, PL a další země v návaznosti na sčítání lidu 2021 — historické hodnoty mohly být zpětně upraveny.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Celková změna populace</div>
@@ -364,7 +364,7 @@
     <div class="chart-wrap"><canvas id="chart-population"></canvas></div>
     <div class="card-note">Zachycuje kombinaci přirozené měny a migrace. Výrazný pokles u PL a SK v určitých obdobích odráží masovou emigraci za prací.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Úhrnná plodnost (TFR)</div>
@@ -373,7 +373,7 @@
     <div class="chart-wrap"><canvas id="chart-tfr"></canvas></div>
     <div class="card-note">Úhrnná plodnost (Total Fertility Rate) udává průměrný počet živě narozených dětí na jednu ženu za celý reprodukční věk při zachování aktuálních věkově specifických měr plodnosti. Hodnota 2,1 odpovídá prosté reprodukci. Česko zaznamenalo výrazný vzestup po roce 2005 z historického minima, Maďarsko po roce 2011 silně stimulováno pronatalitní politikou (CSOK a dalšími dávkami). Polsko a Slovensko naopak od roku 2017 kontinuálně klesají na historická minima.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Míra nezaměstnanosti</div>
@@ -382,9 +382,9 @@
     <div class="chart-wrap"><canvas id="chart-unemployment"></canvas></div>
     <div class="card-note">Standardizovaná míra nezaměstnanosti (15–74 let). Viditelné dopady krizí 2008–2009 a covidu 2020.</div>
   </div>
-
+ 
   <div class="section-divider"><span>Lidský rozvoj & blahobyt</span></div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Index lidského rozvoje (HDI)</div>
@@ -393,7 +393,7 @@
     <div class="chart-wrap"><canvas id="chart-hdi"></canvas></div>
     <div class="card-note">Kompozitní index zahrnující příjem (HDP/hlavu), vzdělání a délku života. Maximální hodnota je 1.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Spokojenost se životem</div>
@@ -402,9 +402,9 @@
     <div class="chart-wrap"><canvas id="chart-happiness"></canvas></div>
     <div class="card-note">Sebereportovaná životní spokojenost. Data nejsou dostupná pro všechny roky a všechny země, proto jsou zobrazeny dostupné datové body.</div>
   </div>
-
+ 
   <div class="section-divider"><span>Instituce & zdraví</span></div>
-
+ 
   <div class="chart-card wide">
     <div class="card-header">
       <div class="card-title">V-Dem: Index svobody projevu a alternativních zdrojů informací</div>
@@ -413,7 +413,7 @@
     <div class="chart-wrap"><canvas id="chart-vdem"></canvas></div>
     <div class="card-note">Akademický kompozitní index hodnotící svobodu tisku, svobodu vyjadřování a dostupnost alternativních informačních zdrojů. Metodika je konzistentní od roku 1789 bez přerušení. Staví na hodnocení ~3 500 odborníků přes Bayesovský model odhadu — jde o jeden z nejrobustnějších a nejcitovanějších indexů v politické vědě. Zdroj: V-Dem v15, data 2004–2024. Maďarsko klesá nepřetržitě od roku 2010, Polsko zaznamenalo propad po roce 2015 (vláda PiS) a prudké zlepšení po změně vlády v roce 2023, Slovensko výrazně kleslo po roce 2023.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Střední délka života při narození</div>
@@ -422,7 +422,7 @@
     <div class="chart-wrap"><canvas id="chart-lifeexp"></canvas></div>
     <div class="card-note">Výsledkový ukazatel zdravotního a sociálního systému. Eurostat zveřejnil data za rok 2024 v březnu 2026 (předběžná, na základě týdenních dat o úmrtích). Viditelný propad v letech 2020–2021 v důsledku covidu — Maďarsko zaznamenalo jeden z největších poklesů v EU, Česko jej dohání rychleji než ostatní.</div>
   </div>
-
+ 
   <div class="chart-card">
     <div class="card-header">
       <div class="card-title">Index vnímání korupce (CPI)</div>
@@ -431,20 +431,20 @@
     <div class="chart-wrap"><canvas id="chart-cpi"></canvas></div>
     <div class="card-note">⚠ Pozor na metodiku: data před rokem 2012 nejsou srovnatelná s novější řadou — proto graf začíná rokem 2012. Hodnota 100 = žádná vnímaná korupce. Maďarsko je největším propadákem regionu (–15 bodů za 13 let). Česko naopak výrazně zlepšilo. CPI 2025 (zveřejněno únor 2026) je nejnovější dostupný ročník.</div>
   </div>
-
+ 
   <div class="hr-notice">
     ⚠ Chorvatsko vstoupilo do EU 1. července 2013. Data jsou dostupná pro kratší časové období. V grafech s indexem 2004 = 100 je Chorvatsko zobrazeno od roku 2013 — přímé srovnání délky růstové dráhy proto není platné. Porovnávejte spíše trend a aktuální úroveň.
   </div>
-
+ 
 </div>
-
+ 
 <footer>
   Zdroje: Eurostat (ec.europa.eu/eurostat), UNDP Human Development Reports (hdr.undp.org), OECD Better Life Index, IMF World Economic Outlook, Transparency International (transparency.org/cpi), WID.world. · Life expectancy 2024: předběžná data Eurostat, zveřejněna 13. 3. 2026. · CPI 2025: zveřejněno 10. 2. 2026. · Chorvatsko: vstup do EU 2013.
 </footer>
-
+ 
 <script>
 const YEARS_MAIN = [2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024];
-
+ 
 const DEBT_GDP = {
   CZ: [28.9,28.0,27.9,27.5,28.7,33.6,37.4,39.8,44.5,44.9,42.2,39.7,36.6,34.2,32.1,30.0,37.7,42.0,44.2,44.0,44.2],
   SK: [41.5,34.2,30.5,29.6,28.5,36.3,40.8,43.3,52.2,54.7,53.5,51.9,51.8,50.9,49.4,48.0,59.7,62.2,57.8,56.0,57.2],
@@ -524,9 +524,9 @@ const SATISFACTION = {
   SI: [7.0,7.0,7.1,7.2,7.5,7.6,7.2,7.4,7.4,7.4],
   HR: [6.4,6.5,6.7,6.8,6.9,7.0,6.9,7.0,7.0,7.0],
 };
-
+ 
 // ─── SETUP ─────────────────────────────────────────────────────────────────
-
+ 
 // Zdroj: Eurostat databrowser ilc_di12 (ec.europa.eu/eurostat/databrowser/view/ilc_di12)
 // CZ, SK, PL, HU, AT, SI: data dostupná od roku 2014 (před tím nejsou v ilc_di12 k dispozici)
 // HR: EU-SILC od 2011, data v ilc_di12 od roku 2013
@@ -542,7 +542,7 @@ const GINI = {
   SI: [null,null,null,null,null,null,null,null,null,null,25.0,24.5,24.4,23.7,23.4,23.5,23.5,24.4,25.3,24.5,23.8],
   HR: [null,null,null,null,null,null,null,null,null,30.9,30.2,30.8,29.8,29.0,29.7,29.1,29.3,29.2,28.8,28.4,29.0],
 };
-
+ 
 // Mediánový čistý příjem domácností 65+ v EUR — Eurostat ilc_di03
 // Zdroj: Eurostat EU-SILC, věková skupina Y_GE65, medián ekvivalizovaného čistého příjmu v EUR
 // Dostupnost: CZ, SK, PL, HU, AT, SI od roku 2014 (EU-SILC databáze ilc_di03)
@@ -561,7 +561,7 @@ const PENSION_PPS = {
   SI: [null,null,null,null,null,null,null,null,null,null,11900,12200,12400,12800,13400,14100,14500,15200,16200,15900],
   HR: [null,null,null,null,null,null,null,null,null,4800,5000,5200,5400,5700,6000,6300,6500,7000,7600,7800],
 };
-
+ 
 // Příjem 65+ jako % mediánového příjmu celé populace — Eurostat ilc_di03
 // Zdroj: Eurostat EU-SILC, poměr mediánového příjmu věkové skupiny 65+ k mediánu celé populace
 // Dostupnost: CZ, SK, PL, HU, AT, SI od roku 2014; HR od roku 2013
@@ -577,7 +577,7 @@ const PENSION_RATIO = {
   SI: [null,null,null,null,null,null,null,null,null,null,89,89,90,90,91,92,93,94,94,95],
   HR: [null,null,null,null,null,null,null,null,null,74,74,74,75,76,77,78,79,80,80,81],
 };
-
+ 
 // Střední délka života při narození (roky, celkem) — Eurostat demo_mlexpec
 // 2024: předběžná data Eurostat (zveřejněno 13. 3. 2026)
 // CZ 2023=78.0→2024=79.0 (+1.0); AT 2023≈81.8→2024≈81.7; SI 2023≈81.7→2024≈82.0; HR 2023≈77.8→2024≈78.2
@@ -591,7 +591,7 @@ const LIFEEXP = {
   SI: [77.9,78.0,78.5,79.0,79.3,79.6,79.7,80.1,80.4,80.7,81.3,80.9,81.2,81.3,81.3,81.6,79.6,79.4,81.0,81.7,82.0],
   HR: [null,null,null,null,null,null,null,null,null,77.5,77.5,77.9,77.7,77.8,78.0,78.2,75.8,74.6,76.5,77.8,78.2],
 };
-
+ 
 // CPI — Transparency International (srovnatelná řada od 2012, skóre 0–100)
 // 2025: zveřejněno 10. 2. 2026; CZ 59, SK 48, PL 49, HU 40, AT 67, SI 57, HR 47
 const CPI_YEARS = [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
@@ -604,7 +604,7 @@ const CPI_DATA = {
   SI: [61,57,58,60,61,61,60,60,60,57,56,56,57,57],
   HR: [46,48,48,51,49,49,48,47,47,47,48,50,47,47],
 };
-
+ 
 // V-Dem Freedom of Expression and Alternative Sources of Information Index
 // Proměnná: v2x_freexp_altinf, skóre 0–1 (vyšší = větší svoboda)
 // Zdroj: V-Dem Institute v15 (data 2004–2024).
@@ -619,7 +619,7 @@ const VDEM = {
   SI: [0.920,0.921,0.922,0.922,0.922,0.923,0.923,0.923,0.922,0.921,0.919,0.850,0.798,0.775,0.763,0.751,0.745,0.740,0.736,0.732,0.731],
   HR: [null,null,null,null,null,null,null,null,null,0.820,0.821,0.822,0.818,0.813,0.810,0.808,0.806,0.804,0.802,0.800,0.800],
 };
-
+ 
 // Úhrnná plodnost (Total Fertility Rate) — průměrný počet dětí na ženu
 // Zdroj: Eurostat demo_find. Hodnoty ověřeny z Eurostat Statistics Explained,
 // Eurostat databrowser tps00199 a OECD Family Database SF2.1.
@@ -635,7 +635,7 @@ const TFR = {
   SI: [1.25,1.26,1.31,1.38,1.53,1.53,1.57,1.56,1.58,1.55,1.58,1.57,1.58,1.62,1.60,1.61,1.60,1.82,1.72,1.54,1.52],
   HR: [null,null,null,null,null,null,null,null,null,1.46,1.46,1.40,1.42,1.48,1.52,1.46,1.48,1.48,1.55,1.53,1.46],
 };
-
+ 
 const COUNTRY_DEFS = {
   CZ: { label: 'Česko',     v: '--cz' },
   SK: { label: 'Slovensko', v: '--sk' },
@@ -645,15 +645,15 @@ const COUNTRY_DEFS = {
   SI: { label: 'Slovinsko', v: '--si' },
   HR: { label: 'Chorvatsko',v: '--hr' },
 };
-
+ 
 function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
-
+ 
 let activeCountries = new Set(Object.keys(COUNTRY_DEFS));
 const charts = {};
 let currentTheme = 'light';
-
+ 
 // ─── THEME ─────────────────────────────────────────────────────────────────
-
+ 
 function themeColors() {
   return {
     grid:  css('--grid-color'),
@@ -664,7 +664,7 @@ function themeColors() {
     border: css('--border'),
   };
 }
-
+ 
 function refreshChartTheme() {
   const t = themeColors();
   Chart.defaults.color = t.muted;
@@ -685,7 +685,7 @@ function refreshChartTheme() {
     chart.update('none');
   });
 }
-
+ 
 document.getElementById('themeToggle').addEventListener('click', () => {
   currentTheme = currentTheme === 'light' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', currentTheme);
@@ -694,9 +694,9 @@ document.getElementById('themeToggle').addEventListener('click', () => {
   document.getElementById('themeLabel').textContent = isDark ? 'Světlý režim' : 'Tmavý režim';
   setTimeout(refreshChartTheme, 30);
 });
-
+ 
 // ─── CHART HELPERS ─────────────────────────────────────────────────────────
-
+ 
 function makeOpts(yLabel, dec = 1, extraY = {}) {
   const t = themeColors();
   return {
@@ -723,7 +723,7 @@ function makeOpts(yLabel, dec = 1, extraY = {}) {
     }
   };
 }
-
+ 
 function buildDS(dataObj, years) {
   return Object.entries(COUNTRY_DEFS).map(([code, def]) => {
     const raw = dataObj[code] || [];
@@ -742,21 +742,21 @@ function buildDS(dataObj, years) {
     };
   });
 }
-
+ 
 function initChart(id, ds, labels, opts) {
   const ctx = document.getElementById(id).getContext('2d');
   charts[id] = new Chart(ctx, { type: 'line', data: { labels, datasets: ds }, options: opts, plugins: [] });
 }
-
+ 
 function updateAll() {
   Object.values(charts).forEach(chart => {
     chart.data.datasets.forEach(ds => { ds.hidden = !activeCountries.has(ds.countryCode); });
     chart.update();
   });
 }
-
+ 
 // ─── MAASTRICHT LINE PLUGIN ─────────────────────────────────────────────────
-
+ 
 const maastrichtPlugin = {
   id: 'maastricht',
   afterDraw(chart) {
@@ -781,7 +781,7 @@ const maastrichtPlugin = {
     ctx.restore();
   }
 };
-
+ 
 const reproductionPlugin = {
   id: 'reproduction',
   afterDraw(chart) {
@@ -806,15 +806,15 @@ const reproductionPlugin = {
     ctx.restore();
   }
 };
-
-
-
-
+ 
+ 
+ 
+ 
 window.addEventListener('DOMContentLoaded', () => {
   Chart.defaults.color = css('--muted');
   Chart.defaults.font.family = "'DM Mono', monospace";
   Chart.defaults.font.size = 11;
-
+ 
   // 1. Dluh/HDP
   const debtCtx = document.getElementById('chart-debt').getContext('2d');
   charts['chart-debt'] = new Chart(debtCtx, {
@@ -823,7 +823,7 @@ window.addEventListener('DOMContentLoaded', () => {
     options: makeOpts('%', 1),
     plugins: [maastrichtPlugin],
   });
-
+ 
   // 2. HDP PPS
   initChart('chart-gdp-pps',    buildDS(GDP_PPS,      YEARS_MAIN),  YEARS_MAIN,  makeOpts('', 0));
   // 3. Inflace
@@ -840,27 +840,27 @@ window.addEventListener('DOMContentLoaded', () => {
   // 8. Satisfaction
   initChart('chart-happiness', buildDS(SATISFACTION, SATISF_YEARS), SATISF_YEARS,
     makeOpts('', 1, { min: 5.0, max: 9.0 }));
-
+ 
   // 10. Příjmový Gini
   initChart('chart-gini', buildDS(GINI, GINI_YEARS), GINI_YEARS,
     makeOpts('', 1, { min: 18, max: 40 }));
-
-  // 11. Důchody — medián 65+ v PPS
+ 
+  // 11. Důchody — medián 65+ v EUR
   initChart('chart-pension-pps', buildDS(PENSION_PPS, PENSION_PPS_YEARS), PENSION_PPS_YEARS,
-    makeOpts(' PPS', 0));
-
+    makeOpts(' EUR', 0));
+ 
   // 12. Důchody — poměr k mediánu populace
   initChart('chart-pension-ratio', buildDS(PENSION_RATIO, PENSION_RATIO_YEARS), PENSION_RATIO_YEARS,
     makeOpts('%', 1, { min: 60, max: 110 }));
-
+ 
   // 13. Střední délka života
   initChart('chart-lifeexp', buildDS(LIFEEXP, LIFEEXP_YEARS), LIFEEXP_YEARS,
     makeOpts(' let', 1, { min: 70, max: 85 }));
-
+ 
   // 14. CPI korupce
   initChart('chart-cpi', buildDS(CPI_DATA, CPI_YEARS), CPI_YEARS,
     makeOpts('', 0, { min: 30, max: 85 }));
-
+ 
   // TFR — úhrnná plodnost
   (function() {
     const tfrCtx = document.getElementById('chart-tfr').getContext('2d');
@@ -871,11 +871,11 @@ window.addEventListener('DOMContentLoaded', () => {
       plugins: [reproductionPlugin],
     });
   })();
-
+ 
   // 15. V-Dem svoboda projevu
   initChart('chart-vdem', buildDS(VDEM, VDEM_YEARS), VDEM_YEARS,
     makeOpts('', 3, { min: 0.4, max: 1.0, ticks: { callback: v => v.toFixed(2), color: themeColors().muted } }));
-
+ 
   // Filter buttons
   document.querySelectorAll('.country-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -885,7 +885,7 @@ window.addEventListener('DOMContentLoaded', () => {
       updateAll();
     });
   });
-
+ 
   let allActive = true;
   document.getElementById('toggleAll').addEventListener('click', function() {
     allActive = !allActive;
